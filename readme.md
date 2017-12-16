@@ -52,3 +52,61 @@ spec.
 
 - Hibernate implements the JPA specification but it also does more
 than JPA.
+
+## Hibernate Architecture
+
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/29547780/34071175-4c1b849c-e26a-11e7-8cc0-a5c5e65d635f.png"></img>
+</p>
+
+Our Java application will have a persistent object that lives in both our 
+application and also in Hibernate since Hibernate will read our 
+objects for mapping the fields in our object to tables in our database.
+
+Hibernate interfaces with the database through JDBC and a `configuration
+file` is used to tell Hibernate what JDBC driver to use and what `dialect`
+to speak to the SQL database. For example the SQL used to communicate with a 
+SQLServer database is different from the SQL used to communicate with 
+a MySQL database.
+
+Hibernate also uses JTA and JNDI for communicating with an application
+container like JBoss in managing transactions.
+
+So Hibernate works by reading a configuration file which tells it
+what database to talk to and how to talk to it and then reading mapping
+files that tell it how to map Java objects to relational tables. You write
+the Java code that uses the Java API to do things like `save` or `update` your 
+data or `query` objects from Hibernate.
+
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/29547780/34071283-f2b15948-e26b-11e7-85fe-50c18aa115b4.png"></img>
+</p>
+
+Hibernate has a few main types of Classes that you will commonly deal with. 
+First we have the `Configuration` Class.
+
+    - Able to read a Hibernate Configuration file and set up Hibernate.
+    - We need to create an instance of this class when we first start up
+    our application so that we can use Hibernate.
+    
+Next we have the `SessionFactory` Class.
+
+    - The SessionFactory is able to manage sessions for us.
+    - We need to get an instance of the SessionFactory to be able 
+    to create a new session.
+    - We usually create a single instance of the SessionFactory and hold on 
+    to it for the lifetime of our application, then when we want to 
+    actually do some work with hibernate, we ask the SessionFactory
+    for a session.
+    - We could execute hibernate queries directly in a session if 
+    we wanted to but it is almost a good idea to ask a session to 
+    start a new transaction and then do our work, and when we are done
+    `commit` the transaction.
+    
+So we typically write all our Java code to actually work with the 
+`Persistent Object` using the `Hibernate` API in the scope of a 
+`Transaction` using a `Session` to interface with Hibernate.
+
+We can also use the `Query` and `Criteria` Classes to query our 
+database using a SQL like syntax through the `Query` class, or a more
+Object Oriented syntax through the `Criteria` class.
