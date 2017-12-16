@@ -27,3 +27,28 @@ should be mapped to relational tables.
 manipulate and save back to the database.
 - Originally created in 2001 by Gavin King.
 - Created to be a better alternative in Java from EJB2.
+
+## Hibernate and JPA
+
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/29547780/34071076-84f6adca-e268-11e7-9e18-02e7bc775531.png"></img>
+</p>
+
+
+### JPA
+
+- JPA = Java Persistence API.
+- JPA itself is not a framework but a specification that a framework
+can implement to be considered JPA compatible.
+- You can think of JPA as an Interface and Hibernate as a Class that 
+implements that Interface. 
+
+JPA is an abstraction layer over a specific implementation of persistence
+in Java. It allows you to write Java code that uses JPA interfaces
+which can work with any persistence framework that implements the JPA
+spec.
+
+### Hibernate
+
+- Hibernate implements the JPA specification but it also does more
+than JPA.
