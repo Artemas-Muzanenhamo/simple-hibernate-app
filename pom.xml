@@ -34,6 +34,11 @@
             <artifactId>jboss-transaction-api-1.0.1_spec</artifactId>
             <version>5.0.2.GA</version>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.6</version>
+        </dependency>
     </dependencies>
 
     <build>
